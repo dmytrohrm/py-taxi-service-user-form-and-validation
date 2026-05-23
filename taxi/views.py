@@ -102,7 +102,9 @@ class DriverCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = get_user_model()
+    queryset = Driver.objects.all()
+    template_name = "taxi/driver_confirm_delete.html"
+    context_object_name = "driver"
     success_url = reverse_lazy("taxi:driver-list")
 
 
